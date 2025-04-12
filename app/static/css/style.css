@@ -273,9 +273,10 @@ h5 {
 .highlighted {
     background-color: #d1e6d1;
     /* Light pastel green highlight */
-    border: 1px solid #4a8f4a;
+    border: 1px solid #508750;
     border-radius: 5px;
     padding: 2px;
+    font-weight: bold;
 }
 
 /* Loading Styles */
@@ -328,7 +329,7 @@ h5 {
 }
 
 .null-value-required::after {
-    content: "Required";
+    content: "Povinné";
     position: absolute;
     right: 5px;
     top: 50%;

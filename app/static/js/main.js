@@ -331,12 +331,12 @@ $(document).ready(function () {
 
         // Create the null values summary
         const summaryContainer = $('<div class="null-summary-container mt-3 p-2 border rounded"></div>');
-        const nullValuesSpan = $(`<span class="null-value-count px-2 py-1 mx-1 rounded">Optional: ${nullValueCount}</span>`).css({
+        const nullValuesSpan = $(`<span class="null-value-count px-2 py-1 mx-1 rounded">Volitelné: ${nullValueCount}</span>`).css({
             'background-color': '#fff3cc',
             'color': '#856404',
             'font-weight': 'bold'
         });
-        const nullRequiredValuesSpan = $(`<span class="null-required-value-count px-2 py-1 mx-1 rounded">Required: ${nullRequiredValueCount}</span>`).css({
+        const nullRequiredValuesSpan = $(`<span class="null-required-value-count px-2 py-1 mx-1 rounded">Povinné: ${nullRequiredValueCount}</span>`).css({
             'background-color': '#ffcccc',
             'color': '#dc3545',
             'font-weight': 'bold'
@@ -423,8 +423,11 @@ $(document).ready(function () {
             // Scroll to the highlighted element
             const highlightedElement = originalText.find('.highlighted');
             if (highlightedElement.length) {
-                // Calculate the scroll position
-                const scrollTo = highlightedElement.offset().top - originalText.offset().top + originalText.scrollTop();
+                // Calculate the scroll position to center the highlighted text
+                const elementTop = highlightedElement.offset().top - originalText.offset().top;
+                const elementHeight = highlightedElement.outerHeight();
+                const containerHeight = originalText.height();
+                const scrollTo = elementTop - (containerHeight / 2) + (elementHeight / 2) + originalText.scrollTop();
 
                 // Smooth scroll with animation (300ms duration)
                 originalText.animate({
