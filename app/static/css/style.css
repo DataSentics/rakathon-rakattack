@@ -358,3 +358,28 @@ h5 {
     color: #dc3545;
     margin-bottom: 5px;
 }
+
+/* Null Values Summary Styles */
+.null-summary-container {
+    background-color: #f9f9f9;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 1px solid #e0efe0;
+    position: relative;
+    z-index: 1;
+}
+
+.null-value-count,
+.null-required-value-count {
+    margin: 3px;
+    display: inline-block;
+    font-weight: 600;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}

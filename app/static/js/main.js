@@ -112,12 +112,14 @@ $(document).ready(function () {
         let dateEntries = [];
         if (data.dates) {
             if (typeof data.dates === 'object' && !Array.isArray(data.dates)) {
-                // Extract both keys and values from the dates object
+                // Extract both keys and values from the dates object, filtering out null values
                 dateEntries = Object.entries(data.dates)
-                    .filter(([_, value]) => typeof value === 'string' && value)
+                    .filter(([_, value]) => typeof value === 'string' && value && value.toLowerCase() !== 'null')
                     .map(([key, value]) => ({ key, date: value }));
             } else if (Array.isArray(data.dates)) {
-                dateEntries = data.dates.map(date => ({ key: '', date }));
+                dateEntries = data.dates
+                    .filter(date => date && date.toLowerCase() !== 'null')
+                    .map(date => ({ key: '', date }));
             }
         }
 
@@ -186,6 +188,10 @@ $(document).ready(function () {
                 missingRequiredFields.add(field);
             });
         }
+
+        // Variables to track null values
+        let nullValueCount = 0;
+        let nullRequiredValueCount = 0;
 
         delete data.missing_required_fields;
 
@@ -258,12 +264,14 @@ $(document).ready(function () {
                     // Add pastel yellow background for null values
                     if (value === null || value === "null") {
                         keyValuePair.addClass('null-value');
+                        nullValueCount++;
 
                         // Check if this is a required field that is missing
                         if (missingRequiredFields.has(fullKey)) {
                             // Override with the required field style (red background)
                             keyValuePair.removeClass('null-value');
                             keyValuePair.addClass('null-value-required');
+                            nullRequiredValueCount++;
                         } else {
                             // Also check if this field matches any part of a missing field path
                             // This helps when the paths might be formatted differently
@@ -272,6 +280,7 @@ $(document).ready(function () {
                                 if (missingField.includes(fullKey) || fullKey.includes(missingField)) {
                                     keyValuePair.removeClass('null-value');
                                     keyValuePair.addClass('null-value-required');
+                                    nullRequiredValueCount++;
                                     break;
                                 }
                             }
@@ -297,6 +306,27 @@ $(document).ready(function () {
 
         // Render the JSON and append to results container
         analysisResults.append(renderJson(data));
+
+        // Create the null values summary
+        const summaryContainer = $('<div class="null-summary-container mt-3 p-2 border rounded"></div>');
+        const nullValuesSpan = $(`<span class="null-value-count px-2 py-1 mx-1 rounded">Optional: ${nullValueCount}</span>`).css({
+            'background-color': '#fff3cc',
+            'color': '#856404',
+            'font-weight': 'bold'
+        });
+        const nullRequiredValuesSpan = $(`<span class="null-required-value-count px-2 py-1 mx-1 rounded">Required: ${nullRequiredValueCount}</span>`).css({
+            'background-color': '#ffcccc',
+            'color': '#dc3545',
+            'font-weight': 'bold'
+        });
+
+        summaryContainer.append($('<strong>Missing values: </strong>'));
+        summaryContainer.append(nullRequiredValuesSpan);
+        summaryContainer.append(nullValuesSpan);
+
+
+        // Append the summary container to the card-body element (parent of analysisResults)
+        analysisResults.parent().append(summaryContainer);
 
         // Add some CSS for better visualization
         $('<style>')
