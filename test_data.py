@@ -194,12 +194,13 @@ SAMPLE_RESPONSE = {
     },
     "dates": {
         "admission": "2022-09-15",
-        "asdf": "2023-01-31",
-        "discharge": "2023-05-20",
-        "sadfa": "2023-08-12",
-        "followUp": "2023-12-05",
+        "followUp": "2023-01-31",
+        "hospitalization": "2023-05-20",
+        "diagnosis": "2023-08-12",
+        "discharge": "2023-12-05",
     },
 }
+
 
 def main():
     """Print the sample text and response for testing."""

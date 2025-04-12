@@ -103,34 +103,36 @@ $(document).ready(function () {
     function generateTimeline(data) {
         patientTimeline.empty();
 
-        // Extract dates from the data
-        let dates = [];
+        // Extract dates and their keys from the data
+        let dateEntries = [];
         if (data.dates) {
             if (typeof data.dates === 'object' && !Array.isArray(data.dates)) {
-                // Extract all date values from the dates object
-                dates = Object.values(data.dates).filter(value =>
-                    typeof value === 'string' && value
-                );
+                // Extract both keys and values from the dates object
+                dateEntries = Object.entries(data.dates)
+                    .filter(([_, value]) => typeof value === 'string' && value)
+                    .map(([key, value]) => ({ key, date: value }));
             } else if (Array.isArray(data.dates)) {
-                dates = data.dates;
+                dateEntries = data.dates.map(date => ({ key: '', date }));
             }
         }
 
-
         // Sort dates and create timeline events
-        dates = [...new Set(dates)].sort(); // Remove duplicates and sort
+        dateEntries.sort((a, b) => a.date.localeCompare(b.date));
 
-        if (dates.length === 0) {
+        if (dateEntries.length === 0) {
             patientTimeline.html('<p>No dates found in the data</p>');
             return;
         }
 
         // For horizontal timeline, calculate positions
-        const totalDates = dates.length;
+        const totalDates = dateEntries.length;
 
-        dates.forEach((date, index) => {
+        dateEntries.forEach((entry, index) => {
             const event = $('<div class="timeline-event"></div>');
-            event.html(`<div>${date}</div>`);
+            event.html(`
+                <div class="date">${entry.date}</div>
+                <div class="event-key">${entry.key}</div>
+            `);
 
             // Calculate position percentage for more precise placement
             if (totalDates > 1) {
