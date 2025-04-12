@@ -10,6 +10,7 @@ body {
     background-color: #ffffff;
     border: 1px solid #e0efe0;
     /* Light pastel green border */
+    height: 100%;
 }
 
 /* Button styles */
@@ -131,8 +132,10 @@ body {
     margin: 0;
     padding: 15px 0 0;
     text-align: center;
-    flex: 1;
-    max-width: fit-content;
+    font-size: 1.1rem;
+    font-weight: bold;
+    word-break: break-word;
+    max-width: 120px;
 }
 
 .horizontal-timeline .timeline-event::before {
@@ -147,12 +150,39 @@ body {
     transform: translateX(-50%);
 }
 
-.horizontal-timeline .timeline-event:first-child {
+.horizontal-timeline .timeline-event:first-child,
+.horizontal-timeline .timeline-event.first-event {
     text-align: left;
 }
 
-.horizontal-timeline .timeline-event:last-child {
+.horizontal-timeline .timeline-event:first-child::before,
+.horizontal-timeline .timeline-event.first-event::before {
+    left: 8px;
+    transform: none;
+}
+
+.horizontal-timeline .timeline-event:last-child,
+.horizontal-timeline .timeline-event.last-event {
     text-align: right;
+    min-width: 120px;
+    max-width: 150px;
+}
+
+.horizontal-timeline .timeline-event:last-child::before,
+.horizontal-timeline .timeline-event.last-event::before {
+    left: auto;
+    right: 8px;
+    transform: none;
+}
+
+.horizontal-timeline .timeline-event .date {
+    margin-bottom: 3px;
+    opacity: 0.7;
+}
+
+.horizontal-timeline .timeline-event .event-key {
+    font-size: 1rem;
+    opacity: 1;
 }
 
 .results-container {
@@ -210,4 +240,15 @@ body {
 .spinner-border {
     color: #7fbf7f !important;
     /* Pastel green spinner */
+}
+
+/* Analysis Results Styles */
+.text-primary.object-key {
+    color: #2c502c !important;
+    /* Dark green for analysis result toggles */
+}
+
+.section-header .text-primary {
+    color: #2c502c !important;
+    /* Dark green for section headers */
 }

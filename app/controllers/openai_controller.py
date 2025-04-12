@@ -19,6 +19,8 @@ class OpenAIController:
 
         try:
             response = self.client.chat.completions.create(
+                temperature=0.0,  # Using low temperature for more consistent, structured output
+                max_tokens=4000,
                 model=self.deployment_name,
                 messages=[
                     {"role": "system", "content": custom_prompt},
@@ -26,6 +28,7 @@ class OpenAIController:
                 ],
                 response_format={"type": "json_object"},
             )
+            print(response)
             print(response.choices[0].message.content)
 
             return {"success": True, "data": response.choices[0].message.content}

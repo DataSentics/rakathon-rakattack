@@ -136,13 +136,34 @@ $(document).ready(function () {
 
             // Calculate position percentage for more precise placement
             if (totalDates > 1) {
-                const position = index / (totalDates - 1) * 100;
-                event.css({
-                    'position': 'absolute',
-                    'left': `${position}%`,
-                    'transform': 'translateX(-50%)',
-                    'min-width': '80px'
-                });
+                // Special handling for first and last elements to avoid overflow
+                if (index === 0) {
+                    // First element should align to left
+                    event.addClass('first-event');
+                    event.css({
+                        'position': 'absolute',
+                        'left': '0',
+                        'transform': 'translateX(0)',
+                    });
+                } else if (index === totalDates - 1) {
+                    // Last element should align to right
+                    event.addClass('last-event');
+                    event.css({
+                        'position': 'absolute',
+                        'right': '0',
+                        'left': 'auto',
+                        'transform': 'none',
+                    });
+                } else {
+                    // Middle elements use percentage-based positioning
+                    // Adjust range to be between 5% and 95% to avoid edges
+                    const position = 5 + (index / (totalDates - 1) * 90);
+                    event.css({
+                        'position': 'absolute',
+                        'left': `${position}%`,
+                        'transform': 'translateX(-50%)',
+                    });
+                }
             }
 
             patientTimeline.append(event);

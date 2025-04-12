@@ -1,0 +1,43 @@
+    # ### Important Czech Medical Terms and Their Translations:
+
+    # - "stp." or "st.p." = status post (after a procedure)
+    # - "dg." = diagnosis
+    # - "ECOG" = performance status scale
+    # - "t.č." = currently
+    # - "KP" = cardiopulmonary
+    # - "anamnéza" = medical history
+    # - "dle" = according to
+    # - "vlevo/vpravo" = left/right
+    # - "bez" = without
+    # - "pacient/pacientka" = male patient/female patient
+    # - "vyšetření" = examination
+    # - "nález" = finding
+    # - "kontrola" = check-up
+    # - "operace" = surgery
+    # - "RTG" or "CT" or "MR" = imaging methods
+    # - "histologie" = histology
+    # - "léčba" = treatment
+    # - "infiltrace" = infiltration
+    # - "uzliny" or "LU" = lymph nodes
+    # - "metastázy" = metastases
+
+    # ### Data Format Recognition:
+
+    # - **First line pattern**: "=== [record_id]. [treatment_id] / [social_security_number] / [report_id]"
+    # - Look for ICD codes that often appear at the beginning of the report (e.g., "C504", "C19", "C20")
+    # - Dates are typically in format DD.MM.YYYY
+    # - TNM classifications often appear after tumor descriptions, look for patterns like "pT1c, pN0"
+    # - Look for "DIAGNOSTICKÝ SOUHRN:" section which often contains key diagnosis information
+    # - Look for "PLÁN a DOPORUČENÍ:" which contains treatment plans
+    # - Look for "ZÁVĚR:" which contains conlusion of the medical report
+
+    # ### Note on Report Structure:
+
+    # The reports may contain various sections which aren't consistently labeled but commonly include:
+    # - Patient information and demographics
+    # - History of present illness
+    # - Physical examination findings
+    # - Laboratory and imaging results
+    # - Diagnosis information and staging
+    # - Treatment history and current treatment plans
+    # - Follow-up recommendations

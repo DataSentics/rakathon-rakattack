@@ -17,7 +17,7 @@ if use_mock:
     print("Using mock OpenAI controller for testing")
 else:
     # Check for required Azure OpenAI environment variables
-    required_vars = ["AZURE_OPENAI_API_KEY", "AZURE_OPENAI_ENDPOINT"]
+    required_vars = ["AZURE_OPENAI_API_KEY"]
     missing_vars = [var for var in required_vars if not os.getenv(var)]
 
     if missing_vars:
@@ -43,7 +43,7 @@ def index():
 def process_text():
     """Process text using OpenAI controller"""
     data = request.json
-    
+
     text = data.get("text", "")
 
     if not text:
@@ -54,4 +54,4 @@ def process_text():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=5100)
