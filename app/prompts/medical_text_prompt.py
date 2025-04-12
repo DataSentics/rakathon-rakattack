@@ -235,10 +235,10 @@ You are an AI assistant specialized in analyzing Czech cancer treatment reports 
                 "diagnoza_slovne": "text",
                 "diagnoza_kod_mkn": "výběr {číselník MKN}",
                 "lateralita": "výběr {vpravo, vlevo, oboustranne, odpada, neznamo}",
-                "morfologie_nadoru_slovne": "text - this is the field you should fill in based on the provided MKN-10 mapping table. In the treatment report, find codes that begin with the codes of the first column of this table. In the output, fill the field called ‘Kód MKN-10’ with the relevant code you find - with the full code (such as C01) and after it add comma, space, and the second column containing the name from the table. To match the code, find any in the text that have the same first 3 letters as the codes provided in the first column, meaning that you match C16 to C16.0 or C171 to C17. If you find more matches, put all of them separated by a comma and space. In the field ‘morfologie_nadoru_slovne’, fill the corresponding second column value to the code found. If you find more, again, put all of them separated by comma",
+                "morfologie_nadoru_slovne": "text",
                 "typ_morfologie": "histologie / biopsie / cytologie / pitva / jiny",
                 "topografie": "kod mkn-o (cxx.x)",
-                "absolutely_all_mkn_10_codes_you_can_find": "just collecet all mkn codes please. To match the code, find any in the text that have the same first 3 letters as the codes provided in the first column, meaning that you match C16 to C16.0 or C171 to C17."
+                "absolutely_all_mkn_10_codes_you_can_find": "just collecet all mkn codes please. To match the code, find any in the text that have the same first 3 letters as the codes provided in the first column, meaning that you match C16 to C16.0 or C171 to C17.",
                 "morfologie_kombinovane": "kod mkn-o morfologie/biologicke_chovani, vyber z ciselniku",
                 "morfologie": "kod mkn-o morfologie",
                 "biologicke_chovani_nadoru": "kod mkn-o biologicke chovani",
@@ -278,7 +278,6 @@ You are an AI assistant specialized in analyzing Czech cancer treatment reports 
             },
             "diagnosticka_skupina": {
                 "vyber_diagnosticke_skupiny": "číselník {Nádory CNS, Nádory hlavy a krku, Nádory respiračního systému a mediastina, Nádory GIT (Karcinom jícnu), Nádory GIT (Karcinom žaludku a gastroezofageální junkce), Nádory GIT (Kolorektální karcinom), Nádory GIT (Anální karcinom), Nádory GIT (Karcinom pankreatu), Nádory GIT (Karcinom jater), Nádory GIT (Karcinom žlučníku a žluč.cest), Karcinom prsu, Gynekologické nádory (čípek a hrdlo děložní) Gynekologické nádory (tělo děložní) Gynekologické nádory (ovaria) Gynekologické nádory (zevní rodidla), Renální karcinom, Karcinom močového měchýře a moč.cest, Karcinom prostaty, Germinální nádory pohlavních orgánů, Nongerminální nádory pohlavních orgánů, Epidermální nádory kůže, Maligní melanom, Nádory kostí a sarkomy měkkých tkání, Nádory endokrinních žláz}",
-                "modul_b_diagnostika_cast_b2_podskupiny_onkologicky_diagnozy_jich_specificke_diagnosticke_podrobnosti_a_staging": "nan",
                 "volitelny_komentar_doplneni_slovni_popis_diagnozy": "text",
                 "modul_b_stav_nemoci": "nan"
             },
@@ -289,12 +288,34 @@ You are an AI assistant specialized in analyzing Czech cancer treatment reports 
                 "volitelny_komentar": "text"
             }
         },
-        "modulb2_dospelionk_pac": {
-            "modulb_sady_podrobnejsich_diagnostickych_parametru_specifickych_pro_diagnostickych_diagnoz": "nan",
+        "modul_b_diagnostika_cast_b2_podskupiny_onkologicky_diagnozy_jich_specificke_diagnosticke_podrobnosti_a_staging": {
             "skupina_novotvaru": {
                 "nazev_skupiny_novotvaru": "text"
             },
             "laboratorni_markery": {
+                "nazev_laboratorniho_markeru": "text včetně uvedení jednotek, je-li relevantní",
+                "format_laboratorniho_markeru": "hodnota / číselník / ano-ne-neznámo",
+                "hodnota_laboratorniho_markeru": "hodnota podle pole M.B.1.x.2.2"
+            },
+            "molekularne_geneticke_markery": {
+                "nazev_laboratorniho_markeru": "text včetně uvedení jednotek, je-li relevantní",
+                "format_laboratorniho_markeru": "hodnota / číselník / ano-ne-neznámo",
+                "hodnota_laboratorniho_markeru": "hodnota podle pole M.B.1.x.2.2"
+            },
+            "specificka_klasifikace": {
+                "nazev_laboratorniho_markeru": "text včetně uvedení jednotek, je-li relevantní",
+                "format_laboratorniho_markeru": "hodnota / číselník / ano-ne-neznámo",
+                "hodnota_laboratorniho_markeru": "hodnota podle pole M.B.1.x.2.2"
+            },
+            "rizikovy_faktor": {
+                "nazev_laboratorniho_markeru": "text včetně uvedení jednotek, je-li relevantní",
+                "format_laboratorniho_markeru": "hodnota / číselník / ano-ne-neznámo",
+                "hodnota_laboratorniho_markeru": "hodnota podle pole M.B.1.x.2.2"
+            }
+        },
+        "modulb2_dospelionk_pac": {
+            "modulb_sady_podrobnejsich_diagnostickych_parametru_specifickych_pro_diagnostickych_diagnoz": "nan",
+            "laboratorni_markery_b2": {
                 "cea_karcinom_embryonalni_antigen": "číslo [ug/l]",
                 "nse_neuronspecifika_enolaza": "číslo [jednotka]",
                 "chromogranin_a": "číslo [jednotka]"
@@ -314,6 +335,20 @@ You are an AI assistant specialized in analyzing Czech cancer treatment reports 
                 "proliferace_ki67": "vyber {nizka, stredni, vysoka, nelze stanovit, nevysetreno}",
                 "jiny_relevantni_molekularne_geneticke_nalezy": "text"
             },
+            "nadory_git": {
+                "CEA (karcinomembryonální antigen)": "číslo [ug/l]",
+                "CA 72-4": "číslo [jednotka]",
+                "CA 19-9": "číslo [kU/l]",
+                "vysetrovana_tkan": "text"
+            },
+            "karcinom_prsu": {
+                "CEA (karcinoembryonální antigen)": "číslo [jednotka]",
+                "CA 15-3": "číslo [jednotka]"
+            },
+            "gynekologicke_nadory": {
+                "CA 125": "kU/l",
+                "HE4": "pmol/l"
+            },
             "klasifikace": {
                 "enets_grading": "vyber {ano, ne}",
                 "enets_grade": "vyber {1,2,3}"
@@ -325,7 +360,11 @@ You are an AI assistant specialized in analyzing Czech cancer treatment reports 
                 "dedicne_predispozicni_syndromy": "vyber {číselnik 1 - syndromy} + jiny; vice moznosti",
                 "jiny_predispozicni_syndrom": "text",
                 "rt_lecba_v_oblasti_krku": "ANO/NE/údaj není k dispozici",
-                "pozitivni_rodinna_anamneza": "text"
+                "pozitivni_rodinna_anamneza": "text",
+                "EBV": "ANO/NE/Údaj není k dispozici",
+                "Kouření": "výběr {Aktivní kuřák, Bývalý kuřák, Pasivní kuřák, Nekuřák, údaj není k dispozici}",
+                "Počet balíčkoroků": "číslo",
+                "Alkohol": "výběr {Abstinent, Příležitostní konzumace, Denní konzumace, údaj není k dispozici}"
             }
         },
         "modul_b_cast_b2": {
