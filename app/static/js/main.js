@@ -308,9 +308,16 @@ $(document).ready(function () {
                         keyValuePair.attr('data-end', obj.position.end);
                     }
 
-                    // Add event handlers for hovering
-                    keyValuePair.on('mouseenter', highlightText);
-                    keyValuePair.on('mouseleave', removeHighlight);
+                    // Add click handler for searching and highlighting text
+                    keyValuePair.on('click', function () {
+                        const valueElement = $(this).find('.value');
+                        if (valueElement.length) {
+                            const value = valueElement.text();
+                            if (value && value !== "null") {
+                                searchAndHighlightText(value);
+                            }
+                        }
+                    });
 
                     container.append(keyValuePair);
                 }
@@ -378,9 +385,10 @@ $(document).ready(function () {
 
     // Remove highlight
     function removeHighlight() {
-        // Get the original text from medical text input and format it again
-        const formattedText = medicalTextInput.val().trim().replace(/\n/g, '<br>');
-        originalText.html(formattedText);
+        // Store current scroll position and the highlighted element's position
+        const scrollPos = originalText.scrollTop();
+        const highlightedElement = originalText.find('.highlighted');
+        let highlightPosition = null;
     }
 
     // Helper function to escape HTML
@@ -391,5 +399,38 @@ $(document).ready(function () {
             .replace(/>/g, "&gt;")
             .replace(/"/g, "&quot;")
             .replace(/'/g, "&#039;");
+    }
+
+    // Search for text in the original content and highlight it if found
+    function searchAndHighlightText(searchText) {
+        if (!searchText) return;
+
+        const text = originalText.text();
+        const index = text.indexOf(searchText);
+
+        if (index !== -1) {
+            // Found the text, highlight it
+            const beforeHighlight = text.substring(0, index);
+            const highlighted = text.substring(index, index + searchText.length);
+            const afterHighlight = text.substring(index + searchText.length);
+
+            originalText.html(
+                escapeHtml(beforeHighlight) +
+                '<span class="highlighted">' + escapeHtml(highlighted) + '</span>' +
+                escapeHtml(afterHighlight)
+            );
+
+            // Scroll to the highlighted element
+            const highlightedElement = originalText.find('.highlighted');
+            if (highlightedElement.length) {
+                // Calculate the scroll position
+                const scrollTo = highlightedElement.offset().top - originalText.offset().top + originalText.scrollTop();
+
+                // Smooth scroll with animation (300ms duration)
+                originalText.animate({
+                    scrollTop: scrollTo
+                }, 300);
+            }
+        }
     }
 }); 

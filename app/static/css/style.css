@@ -273,6 +273,9 @@ h5 {
 .highlighted {
     background-color: #d1e6d1;
     /* Light pastel green highlight */
+    border: 1px solid #4a8f4a;
+    border-radius: 5px;
+    padding: 2px;
 }
 
 /* Loading Styles */
