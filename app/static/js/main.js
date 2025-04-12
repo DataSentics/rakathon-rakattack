@@ -240,6 +240,11 @@ $(document).ready(function () {
                     keyValuePair.append(`<div class="key">${key}:</div>`);
                     keyValuePair.append(`<div class="value">${Array.isArray(value) ? JSON.stringify(value) : value}</div>`);
 
+                    // Add pastel red background for null values
+                    if (value === null || value === "null") {
+                        keyValuePair.addClass('null-value');
+                    }
+
                     // Store position data as attributes for highlighting
                     if (obj.position) {
                         keyValuePair.attr('data-start', obj.position.start);

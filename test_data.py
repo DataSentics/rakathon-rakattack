@@ -30,11 +30,6 @@ Pacient odchází z ambulance bez známek dechové a oběhové nedostatečnosti.
 
 SAMPLE_RESPONSE = {
     "administrativni_udaje": {
-        "hlavicka_dokumentu": "null",
-        "identifikace_pacienta": "null",
-        "krestni_jmeno": "null",
-        "prijmeni": "null",
-        "datum_narozeni": "null",
         "identifikator_pacienta": "null",
         "statni_obcanstvi": "null",
         "uredni_pohlavi": "null",

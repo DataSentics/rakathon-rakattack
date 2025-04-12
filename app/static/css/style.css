@@ -257,3 +257,10 @@ body {
     color: #2c502c !important;
     /* Dark green for section headers */
 }
+
+/* Null value indicator */
+.null-value {
+    background-color: #ffcccc !important;
+    /* Pastel red background */
+    border-color: #ffaaaa !important;
+}
