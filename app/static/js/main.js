@@ -179,19 +179,12 @@ $(document).ready(function () {
     function displayResults(data) {
         analysisResults.empty();
 
-        // Display missing required fields first if available
+        const missingRequiredFields = new Set();
         if (data.missing_required_fields && data.missing_required_fields.length > 0) {
-            const missingFieldsContainer = $('<div class="missing-fields-container mb-4"></div>');
-            const missingFieldsTitle = $('<h6 class="text-danger">Missing Required Fields:</h6>');
-            missingFieldsContainer.append(missingFieldsTitle);
-
-            const missingFieldsList = $('<ul class="missing-fields-list"></ul>');
+            // Add each missing field to the set for quick checks later
             data.missing_required_fields.forEach(field => {
-                missingFieldsList.append(`<li>${field}</li>`);
+                missingRequiredFields.add(field);
             });
-
-            missingFieldsContainer.append(missingFieldsList);
-            analysisResults.append(missingFieldsContainer);
         }
 
         delete data.missing_required_fields;
@@ -262,9 +255,27 @@ $(document).ready(function () {
                     keyValuePair.append(`<div class="key">${key}:</div>`);
                     keyValuePair.append(`<div class="value">${Array.isArray(value) ? JSON.stringify(value) : value}</div>`);
 
-                    // Add pastel red background for null values
+                    // Add pastel yellow background for null values
                     if (value === null || value === "null") {
                         keyValuePair.addClass('null-value');
+
+                        // Check if this is a required field that is missing
+                        if (missingRequiredFields.has(fullKey)) {
+                            // Override with the required field style (red background)
+                            keyValuePair.removeClass('null-value');
+                            keyValuePair.addClass('null-value-required');
+                        } else {
+                            // Also check if this field matches any part of a missing field path
+                            // This helps when the paths might be formatted differently
+                            for (const missingField of missingRequiredFields) {
+                                // Check if the fullKey is part of a missing field path or vice versa
+                                if (missingField.includes(fullKey) || fullKey.includes(missingField)) {
+                                    keyValuePair.removeClass('null-value');
+                                    keyValuePair.addClass('null-value-required');
+                                    break;
+                                }
+                            }
+                        }
                     }
 
                     // Store position data as attributes for highlighting
@@ -293,7 +304,7 @@ $(document).ready(function () {
                 .json-level { border-left: 1px dashed #ddd; padding-left: 10px; margin-bottom: 5px; }
                 .nested-container { margin-top: 5px; }
                 .section-header { margin-top: 10px; }
-                .key-value-pair { margin: 3px 0; display: flex; }
+                .key-value-pair { margin: 3px 0; display: flex; position: relative; padding-right: 70px; min-height: 24px; }
                 .key { font-weight: bold; margin-right: 5px; }
                 .toggle-icon { margin-right: 5px; }
                 .array-item { margin: 2px 0; }
