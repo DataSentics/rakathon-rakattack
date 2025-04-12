@@ -1,3 +1,331 @@
+reponse = """
+{
+    "administrativni_udaje": {
+        "hlavicka_dokumentu": null,
+        "identifikace_pacienta": null,
+        "krestni_jmeno": null,
+        "prijmeni": null,
+        "datum_narozeni": null,
+        "identifikator_pacienta": null,
+        "statni_obcanstvi": null,
+        "uredni_pohlavi": null,
+        "komunikacni_jazyk": null,
+        "zdravotni_pojisteni": null,
+        "kod_zdravotni_pojistovny": null,
+        "nazev_zdravotni_pojistovny": null,
+        "cislo_zdravotni_pojisteni": null
+    },
+    "modul_a_pacient_parametry": {
+        "modul_a_parametry_vztahujici_se_pacientovi": null,
+        "relevantni_faktory_v_anamneze_pacienta": {
+            "RA": "urologicky a onkologicky nevýznamná",
+            "OA": "1999 ca rekta CHT+RT, HLP, chron. autoimun. hypothyreoza, 2020 IM + 2stenty, operace: 2009 páska pro inkontinenci, 2014 CHCE, v dětství APPE",
+            "GA": "sledovaná, vše v pořádku",
+            "SA": "knihovnice",
+            "EA": "COVID-19 očkovaná",
+            "Léky": "Anopyrin 100 mg tbl p.o. x-0-0//1 nyní EX, Carzap 8 mg tbl p.o. x-0-1//0, Betaloc ZOK 25 mg tbl p.o. x-0-0//1, Vigantol gtt 1x týdně, Lanzul 30 mg tbl p.o. x-1-0//0, Euthyrox 112 ug tbl p.o. x-0-0//1",
+            "Kouření": "ne, kouřila do roku 2000, denně 2-3 po dobu 20 let",
+            "Alergie": "Sumamed (gastroentero obtíže)"
+        },
+        "nadorovy_predispozicni_syndrom": {
+            "relevantni_nadorovy_predispozicni_syndrom": null,
+            "nazev_predispozicniho_syndromu": null,
+            "jiny_predispozicni_syndrom": null,
+            "komentar": null
+        },
+        "onkologicky_suspektni_rodinna_anamneza": {
+            "pribuzensky_stav": null,
+            "onkologicke_onemocneni_specifikace": null,
+            "onkologicke_onemocneni_kod_mkn10": null
+        },
+        "relevantni_komorbidity_a_stav_pacienta": {
+            "zavazne_onemocneni_srdce_a_cev": "IM + 2 stenty",
+            "onemocneni_funkcni_stav_komentar": null,
+            "zavazne_metabolicke_onemocneni": null,
+            "zavazne_plicni_onemocneni": null,
+            "zavazne_onemocneni_git": null,
+            "zavazne_onemocneni_ledvin": null,
+            "autoimunitni_onemocneni": "chronická autoimunitní hypothyreoza",
+            "zavazne_endokrinologicke_onemocneni": null,
+            "neuropsychiatricke_onemocneni": null,
+            "gynekologicke_onemocneni_anamneza": null,
+            "hpv_pozitivita": null,
+            "menopauza_rok": null,
+            "hormonoterapie": null,
+            "antikoncepce": null,
+            "zavazne_onemocneni_infeccni": null,
+            "organova_transplantace": null,
+            "organ": null,
+            "jiny_organ": null,
+            "rok_transplantace": null,
+            "volitelny_komentar": null,
+            "jiny_relevantni_zdravotni_nalezy_vykony_komorbidity": null
+        },
+        "predchozi_onkologicke_onemocneni": {
+            "predchozi_onkologicke_onemocneni": "ANO",
+            "onemocneni_funkcni_stav_komentar": null,
+            "rok_diagnozy": "1999",
+            "lecen_ve_zdravotnickem_zarizeni": null,
+            "onkologicke_onemocneni_kod_mkn_o_3": null
+        },
+        "onkologicky_screening": {
+            "mamograficky_screening": null,
+            "rok_posledni_vysetreni": null,
+            "screening_nadoru_delozniho_hrdla": null,
+            "screening_kolorektalniho_karcinomu": null,
+            "forma_screeningu": null,
+            "plicni_screening": null,
+            "screening_prostaty": null
+        },
+        "alergie": {
+            "lekova_alergie": "ANO",
+            "specifikace": "Sumamed (gastroentero obtíže)",
+            "alergia_na_jod_kontrastni_latky": null,
+            "jine_alergie": null,
+            "abusus": null,
+            "koureni": "Bývalý kuřák",
+            "pocet_denne_vykourenych_balicku_krabicek_cigaret": "2-3",
+            "pocet_let_koureni": "20",
+            "pocet_balickoroku": null,
+            "koureni_komentar": null,
+            "alkohol": null,
+            "alkohol_komentar": null,
+            "drogova_zavislost": null,
+            "drogova_zavislost_komentar": null
+        },
+        "antropometricke_udaje": {
+            "datum_mereni": null,
+            "vyska": "155",
+            "hmotnost": "67",
+            "bmi": null,
+            "bsa": null
+        },
+        "celkovy_stav_pacienta": {
+            "ECOG": "1"
+        },
+        "performance_status_ecog": {
+            "performance_status_ecog": "1",
+            "datum_hodnoceni": null
+        },
+        "karnofskeho_index_ki": {
+            "karnofskeho_index_ki": null,
+            "datum_hodnoceni": null,
+            "opatreni_k_zachovani_plodnosti_pred_onkologickou_lecbou": null
+        },
+        "opatreni_zachovani_plodnosti_pred_onkologickou_lecbou": {
+            "typ_opatreni": null,
+            "datum_provedeni_zahajeni_opatreni": null,
+            "misto_ulozeni_vzorku": null,
+            "volitelny_komentar": null
+        }
+    },
+    "modul_b_cast_b1": {
+        "modul_b_diagnostika_cast_b1_obecne_parametry_popisujici_onkologickou_diagnozu_spolecne_vsemdiagnozam": null,
+        "poradove_cislo_onkologicke_diagnozy_pacienta": null,
+        "klasifikace_nadoru": {
+            "datum_stanoveni_definitivni_diagnozy": null,
+            "diagnosticka_modalita": null,
+            "diagnoza_slovne": "Ca vesiacae urinariae, Ca ani",
+            "diagnoza_kod_mkn": "C679, C218",
+            "lateralita": null,
+            "morfologie_nadoru_slovne": null,
+            "typ_morfologie": null,
+            "topografie": null,
+            "morfologie_kombinovane": null,
+            "morfologie": null,
+            "biologicke_chovani_nadoru": null,
+            "grading_diferenciace_nadoru_g": null,
+            "verze_mkn_o": null,
+            "slovni_popis_diagnozy_komentar": null,
+            "orpha_kod": null
+        },
+        "rozsah_onemocneni_staging": {
+            "stadium": "pT2N0M0 (Ca vesiacae urinariae), cT3N1 (Ca ani)"
+        },
+        "klinicka_tnm_klasifikace": {
+            "ct": null,
+            "cetnost": null,
+            "cn": null,
+            "cm": null
+        },
+        "patologicka_tnm_klasifikace": {
+            "y": null,
+            "r": null,
+            "a": null,
+            "pt": null,
+            "cetnost": null,
+            "pn": null,
+            "p_sn": null,
+            "pocet_pozitivnich_sentinel_uzlin": null,
+            "pocet_celkove_vysetrenych_sentinel_uzlin": null,
+            "pocet_pozitivnich_ostatnich_uzlin": null,
+            "pocet_celkove_vysetrenych_ostatnich_uzlin": null,
+            "pm": null,
+            "stadium": null,
+            "lokalizace_metastaz": null,
+            "lokalizace_metastaz_komentar": null,
+            "lymfaticna_invaze_l": null,
+            "zilni_invaze_v": null,
+            "pn_perineuralni_vaze": null,
+            "r_klasifikace": null,
+            "staging_doplnujici_informace": null
+        },
+        "diagnosticka_skupina": {
+            "vyber_diagnosticke_skupiny": null,
+            "modul_b_diagnostika_cast_b2_podskupiny_onkologicky_diagnozy_jich_specificke_diagnosticke_podrobnosti_a_staging": null,
+            "volitelny_komentar_doplneni_slovni_popis_diagnozy": null,
+            "modul_b_stav_nemoci": null
+        },
+        "presetreni": {
+            "trvale_chebna_odpoved": null,
+            "datum_relapsu_progrese": null,
+            "typ_relapsu": null,
+            "volitelny_komentar": null
+        }
+    },
+    "modulb2_dospelionk_pac": {
+        "modulb_sady_podrobnejsich_diagnostickych_parametru_specifickych_pro_diagnostickych_diagnoz": null,
+        "skupina_novotvaru": {
+            "nazev_skupiny_novotvaru": null
+        },
+        "laboratorni_markery": {
+            "cea_karcinom_embryonalni_antigen": null,
+            "nse_neuronspecifika_enolaza": null,
+            "chromogranin_a": null
+        },
+        "molekularne_geneticke_markery": {
+            "multigenove_vysetreni_pomoci_ngs": null,
+            "datum_ngs_vysetreni": null,
+            "vysetrovana_tkana": null,
+            "vysledek_ngs_vysetreni": null,
+            "nadorova_mutacni_zatez_tmb": null,
+            "alterace_braf_genu": null,
+            "braf_typ_mutace": null,
+            "ret_fuze": null,
+            "ret_fuze_typ": null,
+            "ntrk_fuze": null,
+            "mmr_msi": null,
+            "proliferace_ki67": null,
+            "jiny_relevantni_molekularne_geneticke_nalezy": null
+        },
+        "klasifikace": {
+            "enets_grading": null,
+            "enets_grade": null
+        },
+        "rizikove_faktory": {
+            "karcinoidove_srdce_onemocneni": null,
+            "hormonalni_aktivita_klinicky": null,
+            "jina_klinicka_hormonalni_aktivita": null,
+            "dedicne_predispozicni_syndromy": null,
+            "jiny_predispozicni_syndrom": null,
+            "rt_lecba_v_oblasti_krku": null,
+            "pozitivni_rodinna_anamneza": null
+        }
+    },
+    "modul_b_cast_b2": {
+        "nan": null,
+        "polozka": null,
+        "modul_b_diagnostika_cast_b2_podskupiny_onkologicky_diagnozy_jich_specificke_diagnosticke_podrobnosti_a_staging": null,
+        "nadory_cns": null,
+        "laboratorni_markery": {
+            "cea_karcinom_embryonalni_antigen": null,
+            "nse_neuronspecifika_enolaza": null,
+            "chromogranin_a": null
+        },
+        "molekularne_geneticke_markery": {
+            "multigenove_vysetreni_pomoci_ngs": null,
+            "datum_ngs_vysetreni": null,
+            "vysetrovana_tkana": null,
+            "vysledek_ngs_vysetreni": null,
+            "nadorova_mutacni_zatez_tmb": null,
+            "alterace_braf_genu": null,
+            "braf_typ_mutace": null,
+            "ret_fuze": null,
+            "ret_fuze_typ": null,
+            "ntrk_fuze": null,
+            "mmr_msi": null,
+            "proliferace_ki67": null,
+            "jiny_relevantni_molekularne_geneticke_nalezy": null
+        },
+        "klasifikace": {
+            "enets_grading": null,
+            "enets_grade": null
+        },
+        "rizikove_faktory": {
+            "karcinoidove_srdce_onemocneni": null,
+            "hormonalni_aktivita_klinicky": null,
+            "jina_klinicka_hormonalni_aktivita": null,
+            "dedicne_predispozicni_syndromy": null,
+            "jiny_predispozicni_syndrom": null,
+            "rt_lecba_v_oblasti_krku": null,
+            "pozitivni_rodinna_anamneza": null
+        }
+    },
+    "modulc_dospelionk_pac": {
+        "modulc_souhrn_provedene_onkologicke_lecby_v_koc_odpoved_na_lecbu_a_relevantni_toxicita": null,
+        "lecba": {
+            "datum_zahajeni_lecby": "2023-03-28"
+        },
+        "chirurgicka_lecba": {
+            "datum_operace": "2023-09-08",
+            "indikace_operacnich_vykonu": "onkologicka",
+            "strategie_onkologicke_operace": "kurativni",
+            "poradi_onkol_operace": "primarni",
+            "operacni_pristup": "otevreny",
+            "konverze": null,
+            "typ_vykonu_primarni_nador": "radikalni resekce organu",
+            "radikalni_resekce_nadory_cns": null,
+            "makroskopicke_rezidum_nadoru_r2": "ne",
+            "typ_vykonu_regionalni_uzliny_vysledny_stav": null,
+            "metastazektomie_vzdaleny_metastazy": null,
+            "metastazektomie_lokalizace_vzdalenych_metastazy": null,
+            "jiny_organ": null,
+            "specialni_metoda": null,
+            "specialni_metoda_specifikace": null,
+            "specialni_metoda_jina": null,
+            "volitelny_komentar": null
+        },
+        "chemoterapie": {
+            "datum_zahajeni": "2023-03-28",
+            "datum_ukonceni": "2023-06-06",
+            "planovana_strategie": "kurativni",
+            "upresnena_strategie": "neoadjuvance",
+            "rezim": "cDDP + Gemcitabin",
+            "podane_lecivo": null,
+            "byla_prekrocena_kumulativni_davka": null,
+            "volitelny_komentar": null
+        },
+        "radioterapie": {
+            "datum_zahajeni_serie": null,
+            "datum_ukonceni_serie": null,
+            "planovana_strategie": null,
+            "upresnena_strategie": null,
+            "konkomitantni_strategie": null,
+            "zevni_radioterapie": null,
+            "typ_zevni_rt": null,
+            "brachyterapie": null,
+            "cilovy_objem": null,
+            "pocet_frakci": null,
+            "celkova_davka_gy": null,
+            "ozaren_vulnerabilnich_organizu": null,
+            "radioterapeuticky_centrum": null,
+            "volitelny_komentar": null
+        },
+        "cilena_lecba": {
+            "datum_zahajeni": null,
+            "datum_ukonceni": null,
+            "planovana_strategie": null,
+            "upresnena_strategie": null,
+            "rezim": null,
+            "podane_lecivo": null,
+            "volitelny_komentar": null
+        },
+        "hormonoterapie": {
+            "datum_zahajeni": null,
+            "datum_ukonceni": null,
+            "planovana_strategie": null,
+            "upresne
+"""
 custom_prompt = """
 You are an AI assistant specialized in analyzing Czech cancer treatment reports and medical documentation.
 
@@ -9,21 +337,16 @@ You are an AI assistant specialized in analyzing Czech cancer treatment reports 
     - Suppress any other output than the actual JSON.
     - If you are not able to find the information for specific field, just put a "null" value.
     - The structure should be exactly as the JSON format says.
-    - Find whatever dates and the event connected to the date and append this information to the field "dates"
-
-
-    ### Dates sample format:
-    "dates": {
-        "prijem": "2022-09-15",
-        "hospitalizace": "2023-05-20",
-        "diagnoza": "2023-08-12",
-        "propusteni": "2023-12-05",
-    },
 
     ### Required Data Fields:
     
     {
         "administrativni_udaje": {
+            "hlavicka_dokumentu": "nan",
+            "identifikace_pacienta": "nan",
+            "krestni_jmeno": "text",
+            "prijmeni": "text",
+            "datum_narozeni": "datum",
             "identifikator_pacienta": "text, formát dle typu identifikátoru",
             "statni_obcanstvi": "eHDSICountry (ISO 3166)",
             "uredni_pohlavi": "HL7 Administrative Gender",
@@ -34,6 +357,7 @@ You are an AI assistant specialized in analyzing Czech cancer treatment reports 
             "cislo_zdravotni_pojisteni": "text, formát dle typu identifikátoru"
         },
         "modul_a_pacient_parametry": {
+            "modul_a_parametry_vztahujici_se_pacientovi": "nan",
             "relevantni_faktory_v_anamneze_pacienta": {},
             "nadorovy_predispozicni_syndrom": {
                 "relevantni_nadorovy_predispozicni_syndrom": "ANO/NE/Nevyšetřeno (vyšetření neindikováno)/Údaj není k dispozici",
@@ -385,3 +709,15 @@ You are an AI assistant specialized in analyzing Czech cancer treatment reports 
         }
     }
 """
+
+
+
+import tiktoken
+
+# Initialize the tokenizer for GPT-4
+enc = tiktoken.encoding_for_model("gpt-4o")
+
+# Calculate token length
+token_length = len(enc.encode(custom_prompt))
+
+print(f"Response token length: {token_length}")
