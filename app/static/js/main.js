@@ -132,7 +132,7 @@ $(document).ready(function () {
             return;
         }
 
-        // Format date from YYYY-MM-DD to DD.m.YYYY (without leading zero in month)
+        // Format date from YYYY-MM-DD to DD.m.YYYY (without leading zeroes in day and month)
         function formatDate(dateStr) {
             if (!dateStr || typeof dateStr !== 'string') return dateStr;
 
@@ -140,9 +140,10 @@ $(document).ready(function () {
             const dateMatch = dateStr.match(/^(\d{4})-(\d{2})-(\d{2})$/);
             if (dateMatch) {
                 const [_, year, month, day] = dateMatch;
-                // Remove leading zero from month
+                // Remove leading zeroes from both day and month
+                const dayWithoutZero = day.replace(/^0+/, '');
                 const monthWithoutZero = month.replace(/^0+/, '');
-                return `${day}.${monthWithoutZero}.${year}`;
+                return `${dayWithoutZero}.${monthWithoutZero}.${year}`;
             }
 
             return dateStr;

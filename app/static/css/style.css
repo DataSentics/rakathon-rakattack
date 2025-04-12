@@ -196,6 +196,13 @@ h5 {
     border-radius: 50%;
     background-color: #7fbf7f;
     transform: translateX(-50%);
+    transition: width 0.2s, height 0.2s, top 0.2s;
+}
+
+.horizontal-timeline .timeline-event:hover::before {
+    width: 30px;
+    height: 30px;
+    top: -8px;
 }
 
 .horizontal-timeline .timeline-event:first-child,
