@@ -2,6 +2,9 @@
 body {
     background-color: #f0f7f0;
     /* Light pastel green background */
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.01em;
 }
 
 .container {
@@ -16,6 +19,35 @@ body {
     border: 1px solid #e0efe0;
     /* Light pastel green border */
     height: 100%;
+    border-radius: 8px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.card-title {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight: 600;
+}
+
+/* Global Typography */
+h1 {
+    font-size: 2.2rem;
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-size: 1.8rem;
+    letter-spacing: -0.015em;
+}
+
+h3,
+h4,
+h5 {
+    letter-spacing: -0.01em;
 }
 
 /* Button styles */
@@ -23,6 +55,9 @@ body {
     background-color: #7fbf7f !important;
     /* Pastel green */
     border-color: #7fbf7f !important;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.01em;
 }
 
 .btn-primary:hover,
@@ -37,6 +72,9 @@ body {
     border-color: #c4dfc4 !important;
     color: #2c502c !important;
     /* Darker green text for contrast */
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.01em;
 }
 
 .btn-secondary:hover,
@@ -50,18 +88,22 @@ body {
 #medical-text {
     resize: vertical;
     min-height: 200px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.6;
 }
 
 /* Screen 2 Styles */
 .original-text {
-    height: 95%;
+    height: 600px;
     overflow-y: auto;
     background-color: #f7faf7;
     /* Very light pastel green */
     padding: 10px;
     border-radius: 4px;
-    font-size: 0.9rem;
-    line-height: 1.4;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    font-family: 'Inter', sans-serif;
     border: 1px solid #e0efe0;
 }
 
@@ -137,10 +179,11 @@ body {
     margin: 0;
     padding: 15px 0 0;
     text-align: center;
-    font-size: 1.1rem;
-    font-weight: bold;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
     word-break: break-word;
-    max-width: 120px;
+    max-width: 140px;
 }
 
 .horizontal-timeline .timeline-event::before {
@@ -191,18 +234,21 @@ body {
 }
 
 .results-container {
-    max-height: 500px;
+    max-height: 530px;
     overflow-y: auto;
+    line-height: 1.6;
 }
 
 .key-value-pair {
     margin-bottom: 10px;
-    padding: 8px;
-    border-radius: 4px;
+    padding: 2px;
+    border-radius: 5px;
+    font-size: 0.9rem;
     background-color: #f7faf7;
     /* Very light pastel green */
     transition: background-color 0.2s;
     border: 1px solid #e0efe0;
+    overflow-wrap: anywhere;
 }
 
 .key-value-pair:hover {
@@ -212,14 +258,16 @@ body {
 }
 
 .key {
-    font-weight: bold;
+    font-weight: 600;
     color: #2c502c;
     /* Dark green for key text */
+    font-family: 'Poppins', sans-serif;
 }
 
 .value {
     color: #395539;
     /* Slightly darker green for value text */
+    font-family: 'Inter', sans-serif;
 }
 
 .highlighted {
@@ -249,13 +297,16 @@ body {
 
 /* Analysis Results Styles */
 .text-primary.object-key {
-    color: #2c502c !important;
-    /* Dark green for analysis result toggles */
+    color: #4a8f4a !important;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
 }
 
 .section-header .text-primary {
-    color: #2c502c !important;
-    /* Dark green for section headers */
+    font-size: 1rem;
+    color: #4a8f4a !important;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* Null value indicator */

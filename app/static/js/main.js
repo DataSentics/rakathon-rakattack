@@ -177,7 +177,7 @@ $(document).ready(function () {
         // Function to recursively render JSON
         function renderJson(obj, level = 0, parentKey = '') {
             // Create a container for this level with proper indentation
-            const container = $('<div class="json-level"></div>').css('margin-left', `${level * 20}px`);
+            const container = $('<div class="json-level"></div>').css('margin-left', `${level * 10}px`);
 
             if (level > 0) {
                 container.addClass('nested-container');
