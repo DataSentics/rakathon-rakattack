@@ -35,6 +35,28 @@
 
         <!-- Screen 2: Results -->
         <div id="screen2" class="screen d-none">
+            <div class="row mb-3">
+                <!-- Patient ID Card - 20% width -->
+                <div class="col-md-2">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <img src="https://randomuser.me/api/portraits/men/40.jpg" alt="Patient"
+                                class="patient-icon mb-2">
+                            <h5 id="patient-id">Patient ID</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- Timeline - 80% width -->
+                <div class="col-md-10">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5>Timeline:</h5>
+                            <div id="patient-timeline" class="timeline horizontal-timeline"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="row">
                 <!-- Left Half -->
                 <div class="col-md-6 border-end">
@@ -42,26 +64,6 @@
                         <div class="card-body">
                             <h5>Original Text:</h5>
                             <div id="original-text" class="original-text"></div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="card mb-3">
-                                <div class="card-body text-center">
-                                    <img src="{{ url_for('static', filename='img/patient-icon.svg') }}" alt="Patient"
-                                        class="patient-icon mb-2">
-                                    <h5 id="patient-id">Patient ID</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card mb-3">
-                                <div class="card-body">
-                                    <h5>Timeline:</h5>
-                                    <div id="patient-timeline" class="timeline"></div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

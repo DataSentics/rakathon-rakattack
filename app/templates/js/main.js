@@ -108,22 +108,13 @@ $(document).ready(function () {
         if (data.dates) {
             dates = Array.isArray(data.dates) ? data.dates : [data.dates];
         } else {
-            // Try to find dates in other sections of the data
-            Object.entries(data).forEach(([key, value]) => {
-                if (value && typeof value === 'object') {
-                    Object.entries(value).forEach(([subKey, subValue]) => {
-                        if (subKey.toLowerCase().includes('date') && subValue) {
-                            dates.push(subValue);
-                        }
-                    });
-                } else if (key.toLowerCase().includes('date') && value) {
-                    dates.push(value);
-                }
-            });
+            dates = [];
         }
 
         // Sort dates and create timeline events
         dates = [...new Set(dates)].sort(); // Remove duplicates and sort
+
+        console.log('Dates found:', dates);
 
         if (dates.length === 0) {
             patientTimeline.html('<p>No dates found in the data</p>');

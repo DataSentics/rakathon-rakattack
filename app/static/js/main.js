@@ -56,7 +56,7 @@ $(document).ready(function () {
             if (data.patientID) {
                 patientId.text(data.patientID);
             } else {
-                patientId.text('Unknown');
+                patientId.text('Lukáš Novák');
             }
 
             // Generate timeline from dates
@@ -106,37 +106,16 @@ $(document).ready(function () {
         // Extract dates from the data
         let dates = [];
         if (data.dates) {
-            dates = Array.isArray(data.dates) ? data.dates : [data.dates];
-
-            // If dates is an object with date properties
             if (typeof data.dates === 'object' && !Array.isArray(data.dates)) {
-                Object.entries(data.dates).forEach(([key, value]) => {
-                    if (typeof value === 'string' && value) {
-                        dates.push(value);
-                    } else if (Array.isArray(value)) {
-                        // Handle nested arrays like diagnosisHistory
-                        value.forEach(item => {
-                            if (item.date) {
-                                dates.push(item.date);
-                            }
-                        });
-                    }
-                });
+                // Extract all date values from the dates object
+                dates = Object.values(data.dates).filter(value =>
+                    typeof value === 'string' && value
+                );
+            } else if (Array.isArray(data.dates)) {
+                dates = data.dates;
             }
-        } else {
-            // Try to find dates in other sections of the data
-            Object.entries(data).forEach(([key, value]) => {
-                if (value && typeof value === 'object') {
-                    Object.entries(value).forEach(([subKey, subValue]) => {
-                        if (subKey.toLowerCase().includes('date') && subValue) {
-                            dates.push(subValue);
-                        }
-                    });
-                } else if (key.toLowerCase().includes('date') && value) {
-                    dates.push(value);
-                }
-            });
         }
+
 
         // Sort dates and create timeline events
         dates = [...new Set(dates)].sort(); // Remove duplicates and sort
@@ -146,9 +125,24 @@ $(document).ready(function () {
             return;
         }
 
-        dates.forEach(date => {
+        // For horizontal timeline, calculate positions
+        const totalDates = dates.length;
+
+        dates.forEach((date, index) => {
             const event = $('<div class="timeline-event"></div>');
             event.html(`<div>${date}</div>`);
+
+            // Calculate position percentage for more precise placement
+            if (totalDates > 1) {
+                const position = index / (totalDates - 1) * 100;
+                event.css({
+                    'position': 'absolute',
+                    'left': `${position}%`,
+                    'transform': 'translateX(-50%)',
+                    'min-width': '80px'
+                });
+            }
+
             patientTimeline.append(event);
         });
     }

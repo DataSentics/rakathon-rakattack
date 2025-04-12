@@ -60,11 +60,12 @@ body {
 }
 
 .patient-icon {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
-    background-color: #d1e6d1;
-    /* Light pastel green */
+    object-fit: cover;
+    border: 2px solid #7fbf7f;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .timeline {
@@ -101,6 +102,57 @@ body {
     border-radius: 50%;
     background-color: #7fbf7f;
     /* Pastel green dot */
+}
+
+/* Horizontal Timeline Styles */
+.horizontal-timeline {
+    position: relative;
+    padding: 30px 0 10px;
+    min-height: 60px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 10px;
+}
+
+.horizontal-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 15px;
+    height: 2px;
+    background-color: #7fbf7f;
+    transform: none;
+    width: 100%;
+}
+
+.horizontal-timeline .timeline-event {
+    position: relative;
+    margin: 0;
+    padding: 15px 0 0;
+    text-align: center;
+    flex: 1;
+    max-width: fit-content;
+}
+
+.horizontal-timeline .timeline-event::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: -3px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #7fbf7f;
+    transform: translateX(-50%);
+}
+
+.horizontal-timeline .timeline-event:first-child {
+    text-align: left;
+}
+
+.horizontal-timeline .timeline-event:last-child {
+    text-align: right;
 }
 
 .results-container {
