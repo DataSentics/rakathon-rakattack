@@ -312,12 +312,15 @@ SAMPLE_RESPONSE = {
         },
     },
     "dates": {
-        "admission": "2022-09-15",
-        "followUp": "2023-01-31",
-        "hospitalization": "2023-05-20",
-        "diagnosis": "2023-08-12",
-        "discharge": "2023-12-05",
-        "test": "null",
+        "Příjem": "2022-09-15",
+        # "asdf": "2022-09-15",
+        # "sadfas": "2022-09-15",
+        # "admisasdfsion": "2022-09-15",
+        # "aasdfmission": "2022-09-15",
+        "Hospitalizace": "2023-05-20",
+        "Diagnóza": "2023-08-12",
+        "Propuštění": "2023-12-05",
+        "test": "null",  # should not appear in the timeline
     },
 }
 

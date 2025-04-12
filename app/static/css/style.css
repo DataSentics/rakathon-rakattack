@@ -101,7 +101,7 @@ h5 {
     /* Very light pastel green */
     padding: 10px;
     border-radius: 4px;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     line-height: 1.6;
     font-family: 'Inter', sans-serif;
     border: 1px solid #e0efe0;
@@ -155,7 +155,7 @@ h5 {
 /* Horizontal Timeline Styles */
 .horizontal-timeline {
     position: relative;
-    padding: 30px 0 10px;
+    padding: 11px 0 10px;
     min-height: 60px;
     display: flex;
     justify-content: space-between;
@@ -191,8 +191,8 @@ h5 {
     position: absolute;
     left: 50%;
     top: -3px;
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
     background-color: #7fbf7f;
     transform: translateX(-50%);
@@ -200,18 +200,18 @@ h5 {
 
 .horizontal-timeline .timeline-event:first-child,
 .horizontal-timeline .timeline-event.first-event {
-    text-align: left;
+    text-align: center;
 }
 
 .horizontal-timeline .timeline-event:first-child::before,
 .horizontal-timeline .timeline-event.first-event::before {
-    left: 8px;
+    left: 36px;
     transform: none;
 }
 
 .horizontal-timeline .timeline-event:last-child,
 .horizontal-timeline .timeline-event.last-event {
-    text-align: right;
+    text-align: center;
     min-width: 120px;
     max-width: 150px;
 }
@@ -219,7 +219,7 @@ h5 {
 .horizontal-timeline .timeline-event:last-child::before,
 .horizontal-timeline .timeline-event.last-event::before {
     left: auto;
-    right: 8px;
+    right: 50px;
     transform: none;
 }
 

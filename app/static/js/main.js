@@ -49,8 +49,9 @@ $(document).ready(function () {
             // Parse the data from OpenAI
             const data = JSON.parse(response.data);
 
-            // Display original text
-            originalText.text(medicalTextInput.val().trim());
+            // Display original text with line breaks preserved
+            const formattedText = medicalTextInput.val().trim().replace(/\n/g, '<br>');
+            originalText.html(formattedText);
 
             // Extract patient ID if available
             if (data.patientID) {
@@ -131,13 +132,27 @@ $(document).ready(function () {
             return;
         }
 
+        // Format date from YYYY-MM-DD to MM.DD.YYYY
+        function formatDate(dateStr) {
+            if (!dateStr || typeof dateStr !== 'string') return dateStr;
+
+            // Check if date is in YYYY-MM-DD format
+            const dateMatch = dateStr.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+            if (dateMatch) {
+                const [_, year, month, day] = dateMatch;
+                return `${month}.${day}.${year}`;
+            }
+
+            return dateStr;
+        }
+
         // For horizontal timeline, calculate positions
         const totalDates = dateEntries.length;
 
         dateEntries.forEach((entry, index) => {
             const event = $('<div class="timeline-event"></div>');
             event.html(`
-                <div class="date">${entry.date}</div>
+                <div class="date">${formatDate(entry.date)}</div>
                 <div class="event-key">${entry.key}</div>
             `);
 
@@ -363,7 +378,9 @@ $(document).ready(function () {
 
     // Remove highlight
     function removeHighlight() {
-        originalText.text(originalText.text());
+        // Get the original text from medical text input and format it again
+        const formattedText = medicalTextInput.val().trim().replace(/\n/g, '<br>');
+        originalText.html(formattedText);
     }
 
     // Helper function to escape HTML
