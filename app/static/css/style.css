@@ -87,7 +87,7 @@ h5 {
 /* Screen 1 Styles */
 #medical-text {
     resize: vertical;
-    min-height: 200px;
+    min-height: 600px;
     font-family: 'Inter', sans-serif;
     font-size: 0.95rem;
     line-height: 1.6;

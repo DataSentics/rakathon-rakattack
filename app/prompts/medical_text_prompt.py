@@ -487,3 +487,14 @@ You are an AI assistant specialized in analyzing Czech cancer treatment reports 
         }
     }
 """
+
+### Instructions:
+# 1. Carefully analyze the medical text to understand the patient's condition, treatments, and history.
+# 2. Focus on finding information related to the specified field name.
+# 3. If you find direct information about the field, suggest the exact value from the text.
+# 4. If there is no direct information, use your expertise to suggest a reasonable value based on context clues, related information, or typical values for similar patients.
+# 5. If multiple values are possible, suggest the most likely one with a brief explanation.
+# 6. Return only your suggestion without any introduction or explanation.
+# 7. Keep your response concise and focused on the field value.
+
+# Remember, your suggestion should be useful for medical professionals to complete the patient's record accurately.

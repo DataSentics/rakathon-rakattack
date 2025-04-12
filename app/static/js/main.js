@@ -316,12 +316,32 @@ $(document).ready(function () {
 
                                 // Show the element and start generating text
                                 outputElement.show();
-                                outputElement.html('<div class="generating"><i class="spinner-border spinner-border-sm"></i> Generování ...</div>');
+                                outputElement.html('<div class="generating"><i class="spinner-border spinner-border-sm"></i> Generování validace...</div>');
 
-                                // Simulate text generation (replace with actual implementation)
-                                setTimeout(function () {
-                                    outputElement.html('Validace: Pro toto pole bych doporučil zadat hodnotu "hello world" vzhledem k tomu, že byl pacient hospitalizován v roce 2024.');
-                                }, 1000);
+                                // Get the field name and original medical text
+                                const fieldName = $(this).closest('.key-value-pair').find('.key').text().replace(':', '');
+                                const originalMedicalText = medicalTextInput.val().trim();
+
+                                // Call the validation API
+                                $.ajax({
+                                    url: '/api/validate',
+                                    type: 'POST',
+                                    contentType: 'application/json',
+                                    data: JSON.stringify({
+                                        text: originalMedicalText,
+                                        field: fieldName
+                                    }),
+                                    success: function (response) {
+                                        if (response.success) {
+                                            outputElement.html('Validace: ' + response.suggestion);
+                                        } else {
+                                            outputElement.html('Chyba validace: ' + (response.error || 'Neznámá chyba'));
+                                        }
+                                    },
+                                    error: function (error) {
+                                        outputElement.html('Chyba validace: ' + (error.responseJSON?.error || 'Neznámá chyba'));
+                                    }
+                                });
                             });
                         } else {
                             // Also check if this field matches any part of a missing field path
@@ -353,10 +373,30 @@ $(document).ready(function () {
                                         outputElement.show();
                                         outputElement.html('<div class="generating"><i class="spinner-border spinner-border-sm"></i> Generování validace...</div>');
 
-                                        // Simulate text generation (replace with actual implementation)
-                                        setTimeout(function () {
-                                            outputElement.html('Validace: Pro toto pole bych doporučil zadat hodnotu "hello world" vzhledem k tomu, že byl pacient hospitalizován v roce 2024.');
-                                        }, 1000);
+                                        // Get the field name and original medical text
+                                        const fieldName = $(this).closest('.key-value-pair').find('.key').text().replace(':', '');
+                                        const originalMedicalText = medicalTextInput.val().trim();
+
+                                        // Call the validation API
+                                        $.ajax({
+                                            url: '/api/validate',
+                                            type: 'POST',
+                                            contentType: 'application/json',
+                                            data: JSON.stringify({
+                                                text: originalMedicalText,
+                                                field: fieldName
+                                            }),
+                                            success: function (response) {
+                                                if (response.success) {
+                                                    outputElement.html('Validace: ' + response.suggestion);
+                                                } else {
+                                                    outputElement.html('Chyba validace: ' + (response.error || 'Neznámá chyba'));
+                                                }
+                                            },
+                                            error: function (error) {
+                                                outputElement.html('Chyba validace: ' + (error.responseJSON?.error || 'Neznámá chyba'));
+                                            }
+                                        });
                                     });
                                     break;
                                 }

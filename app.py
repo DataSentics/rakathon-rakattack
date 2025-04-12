@@ -2,6 +2,7 @@ import os
 from dotenv import load_dotenv
 from flask import Flask, render_template, request, jsonify
 import json
+from app.controllers.openai_controller import OpenAIController
 
 # Load environment variables from .env file
 load_dotenv()
@@ -103,8 +104,6 @@ else:
 
         controller = MockOpenAIController()
     else:
-        from app.controllers.openai_controller import OpenAIController
-
         # Define controller as a broader type (any object with process_medical_text method)
         controller = OpenAIController()  # type: ignore
         print("Using Azure OpenAI controller")
@@ -145,6 +144,40 @@ def process_text():
             pass
 
     return jsonify(result)
+
+
+@app.route("/api/validate", methods=["POST"])
+def validate_field():
+    """Validate a specific field using OpenAI with validation prompt"""
+    # get the data
+    data = request.json
+    text = data.get("text", "")
+    field = data.get("field", "")
+
+    print(f"Looking for field: {field}")
+
+    validation_prompt = f"""
+        You are a medical expert specializing in oncology medical records, particularly Czech cancer treatment reports.
+        Your task is to analyze the given medical text and suggest possible values for a specific missing field in the medical record. The field name will be provided along with the full medical text.
+        The validation reason should be written in Czech language.
+        The field you are validating has the following name: {field}
+
+    """
+
+    try:
+        response = controller.client.chat.completions.create(
+            temperature=0.7,
+            max_tokens=500,
+            model=controller.deployment_name,
+            messages=[
+                {"role": "system", "content": validation_prompt},
+                {"role": "user", "content": text},
+            ],
+        )
+
+        return jsonify({"success": True, "suggestion": response.choices[0].message.content})
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)})
 
 
 def validate_required_fields(data, required_fields, path=""):
