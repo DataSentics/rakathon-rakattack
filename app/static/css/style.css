@@ -338,13 +338,48 @@ h5 {
 .null-value-required::after {
     content: "Povinné";
     position: absolute;
-    right: 5px;
+    right: 80px;
     top: 50%;
     transform: translateY(-50%);
     font-size: 0.7rem;
     color: #dc3545;
     font-weight: bold;
     opacity: 0.8;
+}
+
+/* Validation button styles */
+.validate-btn {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.7rem;
+    background-color: #bb1515;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 2px 6px;
+    cursor: pointer;
+}
+
+.validate-btn:hover {
+    background-color: #f31f1f;
+}
+
+.validation-output {
+    background-color: #f8f9fa;
+    border-left: 3px solid #007bff;
+    padding: 8px;
+    margin-top: 5px;
+    font-size: 0.85rem;
+    color: #495057;
+}
+
+.generating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #6c757d;
 }
 
 /* Missing Required Fields Styles */

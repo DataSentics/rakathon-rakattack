@@ -297,6 +297,32 @@ $(document).ready(function () {
                             keyValuePair.removeClass('null-value');
                             keyValuePair.addClass('null-value-required');
                             nullRequiredValueCount++;
+
+                            // Add Validovat button
+                            const validateButton = $('<button class="validate-btn">Validovat</button>');
+                            keyValuePair.append(validateButton);
+
+                            // Add click handler for validation button
+                            validateButton.on('click', function (e) {
+                                e.stopPropagation(); // Prevent triggering the parent click handler
+
+                                // Check if there's already an output element
+                                let outputElement = $(this).closest('.key-value-pair').next('.validation-output');
+                                if (!outputElement.length) {
+                                    // Create new output element if it doesn't exist
+                                    outputElement = $('<div class="validation-output" style="margin-left: 20px; margin-top: 5px;"></div>');
+                                    $(this).closest('.key-value-pair').after(outputElement);
+                                }
+
+                                // Show the element and start generating text
+                                outputElement.show();
+                                outputElement.html('<div class="generating"><i class="spinner-border spinner-border-sm"></i> Generování ...</div>');
+
+                                // Simulate text generation (replace with actual implementation)
+                                setTimeout(function () {
+                                    outputElement.html('Validace: Pro toto pole bych doporučil zadat hodnotu "hello world" vzhledem k tomu, že byl pacient hospitalizován v roce 2024.');
+                                }, 1000);
+                            });
                         } else {
                             // Also check if this field matches any part of a missing field path
                             // This helps when the paths might be formatted differently
@@ -306,6 +332,32 @@ $(document).ready(function () {
                                     keyValuePair.removeClass('null-value');
                                     keyValuePair.addClass('null-value-required');
                                     nullRequiredValueCount++;
+
+                                    // Add Validovat button
+                                    const validateButton = $('<button class="validate-btn">Validovat</button>');
+                                    keyValuePair.append(validateButton);
+
+                                    // Add click handler for validation button
+                                    validateButton.on('click', function (e) {
+                                        e.stopPropagation(); // Prevent triggering the parent click handler
+
+                                        // Check if there's already an output element
+                                        let outputElement = $(this).closest('.key-value-pair').next('.validation-output');
+                                        if (!outputElement.length) {
+                                            // Create new output element if it doesn't exist
+                                            outputElement = $('<div class="validation-output" style="margin-left: 20px; margin-top: 5px;"></div>');
+                                            $(this).closest('.key-value-pair').after(outputElement);
+                                        }
+
+                                        // Show the element and start generating text
+                                        outputElement.show();
+                                        outputElement.html('<div class="generating"><i class="spinner-border spinner-border-sm"></i> Generování validace...</div>');
+
+                                        // Simulate text generation (replace with actual implementation)
+                                        setTimeout(function () {
+                                            outputElement.html('Validace: Pro toto pole bych doporučil zadat hodnotu "hello world" vzhledem k tomu, že byl pacient hospitalizován v roce 2024.');
+                                        }, 1000);
+                                    });
                                     break;
                                 }
                             }
