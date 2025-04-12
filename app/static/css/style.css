@@ -309,9 +309,37 @@ h5 {
     font-family: 'Poppins', sans-serif;
 }
 
-/* Null value indicator */
 .null-value {
+    background-color: #fff3cc !important;
+    /* Pastel yellow background */
+    border-color: #ffe699 !important;
+}
+
+.null-value-important {
     background-color: #ffcccc !important;
     /* Pastel red background */
     border-color: #ffaaaa !important;
+}
+
+/* Missing Required Fields Styles */
+.missing-fields-container {
+    background-color: #fff3f3;
+    border: 1px solid #ffcccc;
+    border-radius: 6px;
+    padding: 15px;
+}
+
+.missing-fields-container h6 {
+    margin-top: 0;
+    color: #dc3545;
+}
+
+.missing-fields-list {
+    margin-bottom: 0;
+    padding-left: 20px;
+}
+
+.missing-fields-list li {
+    color: #dc3545;
+    margin-bottom: 5px;
 }

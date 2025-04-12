@@ -62,6 +62,11 @@ $(document).ready(function () {
             // Generate timeline from dates
             generateTimeline(data);
 
+            // Add missing required fields to the data object
+            if (response.missing_required_fields && response.missing_required_fields.length > 0) {
+                data.missing_required_fields = response.missing_required_fields;
+            }
+
             // Display analysis results
             displayResults(data);
 
@@ -173,6 +178,23 @@ $(document).ready(function () {
     // Display analysis results
     function displayResults(data) {
         analysisResults.empty();
+
+        // Display missing required fields first if available
+        if (data.missing_required_fields && data.missing_required_fields.length > 0) {
+            const missingFieldsContainer = $('<div class="missing-fields-container mb-4"></div>');
+            const missingFieldsTitle = $('<h6 class="text-danger">Missing Required Fields:</h6>');
+            missingFieldsContainer.append(missingFieldsTitle);
+
+            const missingFieldsList = $('<ul class="missing-fields-list"></ul>');
+            data.missing_required_fields.forEach(field => {
+                missingFieldsList.append(`<li>${field}</li>`);
+            });
+
+            missingFieldsContainer.append(missingFieldsList);
+            analysisResults.append(missingFieldsContainer);
+        }
+
+        delete data.missing_required_fields;
 
         // Function to recursively render JSON
         function renderJson(obj, level = 0, parentKey = '') {
