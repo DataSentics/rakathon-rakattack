@@ -4,6 +4,11 @@ body {
     /* Light pastel green background */
 }
 
+.container {
+    max-width: 1350px;
+    margin: 0 auto;
+}
+
 .card {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     margin-bottom: 20px;
@@ -49,7 +54,7 @@ body {
 
 /* Screen 2 Styles */
 .original-text {
-    height: 150px;
+    height: 95%;
     overflow-y: auto;
     background-color: #f7faf7;
     /* Very light pastel green */
