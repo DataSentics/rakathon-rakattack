@@ -312,15 +312,11 @@ SAMPLE_RESPONSE = {
         },
     },
     "dates": {
-        "Příjem": "2022-09-15",
-        # "asdf": "2022-09-15",
-        # "sadfas": "2022-09-15",
-        # "admisasdfsion": "2022-09-15",
-        # "aasdfmission": "2022-09-15",
-        "Hospitalizace": "2023-05-20",
-        "Diagnóza": "2023-08-12",
-        "Propuštění": "2023-12-05",
-        "test": "null",  # should not appear in the timeline
+        "Diagnóza": "2023-03-22",
+        "Chemoterapie start": "2023-03-28",
+        "Chemoterapie konec": "2023-06-06",
+        "Operace": "2023-09-08",
+        "CT vyšetření": "2024-10-16",
     },
 }
 
