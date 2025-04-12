@@ -317,6 +317,7 @@ SAMPLE_RESPONSE = {
         "hospitalization": "2023-05-20",
         "diagnosis": "2023-08-12",
         "discharge": "2023-12-05",
+        "test": "null",
     },
 }
 

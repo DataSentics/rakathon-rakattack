@@ -7,6 +7,18 @@ load_dotenv()
 
 app = Flask(__name__, static_folder="app/static", template_folder="app/templates")
 
+REQUIRED_FIELDS = {
+    "administrativni_udaje": {
+        "identifikator_pacienta",
+        "komunikacni_jazyk"
+    },
+    "modul_a_pacient_parametry": {
+        "onkologicky_suspektni_rodinna_anamneza": {
+            "pribuzensky_stav"
+        }
+    }
+}
+
 # Initialize controller based on environment variables
 use_mock = os.getenv("USE_MOCK", "false").lower() == "true"
 
@@ -50,6 +62,10 @@ def process_text():
         return jsonify({"success": False, "error": "No text provided"}), 400
 
     result = controller.process_medical_text(text)
+
+    
+
+
     return jsonify(result)
 
 
