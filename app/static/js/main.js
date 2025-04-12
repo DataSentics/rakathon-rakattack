@@ -132,7 +132,7 @@ $(document).ready(function () {
             return;
         }
 
-        // Format date from YYYY-MM-DD to DD.MM.YYYY
+        // Format date from YYYY-MM-DD to DD.m.YYYY (without leading zero in month)
         function formatDate(dateStr) {
             if (!dateStr || typeof dateStr !== 'string') return dateStr;
 
@@ -140,7 +140,9 @@ $(document).ready(function () {
             const dateMatch = dateStr.match(/^(\d{4})-(\d{2})-(\d{2})$/);
             if (dateMatch) {
                 const [_, year, month, day] = dateMatch;
-                return `${day}.${month}.${year}`;
+                // Remove leading zero from month
+                const monthWithoutZero = month.replace(/^0+/, '');
+                return `${day}.${monthWithoutZero}.${year}`;
             }
 
             return dateStr;
@@ -155,6 +157,13 @@ $(document).ready(function () {
                 <div class="date">${formatDate(entry.date)}</div>
                 <div class="event-key">${entry.key}</div>
             `);
+
+            // Add click event listener to the date element
+            event.on('click', function (e) {
+                // e.stopPropagation();
+                searchAndHighlightText(formatDate(entry.date));
+                console.log(entry.date);
+            });
 
             // Calculate position percentage for more precise placement
             if (totalDates > 1) {
@@ -360,6 +369,8 @@ $(document).ready(function () {
                 .key { font-weight: bold; margin-right: 5px; }
                 .toggle-icon { margin-right: 5px; }
                 .array-item { margin: 2px 0; }
+                .timeline-event { cursor: pointer; transition: transform 0.2s; }
+                .timeline-event:hover { transform: scale(1.5); }
             `)
             .appendTo('head');
     }
