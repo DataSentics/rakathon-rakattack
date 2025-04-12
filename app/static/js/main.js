@@ -132,7 +132,7 @@ $(document).ready(function () {
             return;
         }
 
-        // Format date from YYYY-MM-DD to MM.DD.YYYY
+        // Format date from YYYY-MM-DD to DD.MM.YYYY
         function formatDate(dateStr) {
             if (!dateStr || typeof dateStr !== 'string') return dateStr;
 
@@ -140,7 +140,7 @@ $(document).ready(function () {
             const dateMatch = dateStr.match(/^(\d{4})-(\d{2})-(\d{2})$/);
             if (dateMatch) {
                 const [_, year, month, day] = dateMatch;
-                return `${month}.${day}.${year}`;
+                return `${day}.${month}.${year}`;
             }
 
             return dateStr;
@@ -342,7 +342,7 @@ $(document).ready(function () {
             'font-weight': 'bold'
         });
 
-        summaryContainer.append($('<strong>Missing values: </strong>'));
+        summaryContainer.append($('<strong>Chybějící hodnoty: </strong>'));
         summaryContainer.append(nullRequiredValuesSpan);
         summaryContainer.append(nullValuesSpan);
 
