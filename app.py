@@ -160,13 +160,13 @@ def validate_field():
         You are a medical expert specializing in oncology medical records, particularly Czech cancer treatment reports.
         Your task is to analyze the given medical text and suggest possible values for a specific missing field in the medical record. The field name will be provided along with the full medical text.
         The validation reason should be written in Czech language.
-        Last sentence should include the suggested value in bold text.
+        Last sentence should include the suggested value in bold text. Example: "<b>For this field, the suggested value is value</b>"
+        Whatever output you would provide in bold text, use <b> tags to format it instead of **.
         The field you are validating has the following name: {field}
     """
 
-    # TODO: make the validation prompt bold if ** is otuputed
     # TODO: make the data editable and green once edited
-    # TODO: faiss search??
+    # TODO: faiss search, nice to have
 
     # validation_prompt = "Vyjmenuj mi veškeré zmínky o komorbiditách pacienta. A jak jsi je v textu našel."
 
