@@ -509,20 +509,57 @@ $(document).ready(function () {
     function searchAndHighlightText(searchText) {
         if (!searchText) return;
 
-        const text = originalText.text();
-        const index = text.indexOf(searchText);
+        // Remove all existing highlights first
+        const currentContent = originalText.html();
+        originalText.html(currentContent.replace(/<span class="highlighted">(.*?)<\/span>/g, '$1'));
 
-        if (index !== -1) {
-            // Found the text, highlight it
-            const beforeHighlight = text.substring(0, index);
-            const highlighted = text.substring(index, index + searchText.length);
-            const afterHighlight = text.substring(index + searchText.length);
+        // Create a temporary div to work with the HTML content
+        const tempDiv = $('<div>').html(originalText.html());
+        const textNodes = [];
 
-            originalText.html(
-                escapeHtml(beforeHighlight) +
-                '<span class="highlighted">' + escapeHtml(highlighted) + '</span>' +
-                escapeHtml(afterHighlight)
-            );
+        // Function to collect all text nodes within an element
+        function collectTextNodes(element) {
+            $(element).contents().each(function () {
+                if (this.nodeType === 3) { // Text node
+                    textNodes.push(this);
+                } else if (this.nodeType === 1) { // Element node
+                    collectTextNodes(this);
+                }
+            });
+        }
+
+        collectTextNodes(tempDiv);
+
+        // Search for the text in the collected text nodes
+        let found = false;
+        for (let i = 0; i < textNodes.length; i++) {
+            const node = textNodes[i];
+            const nodeText = node.nodeValue;
+            const index = nodeText.indexOf(searchText);
+
+            if (index !== -1) {
+                // Split the text node into three parts
+                const beforeText = document.createTextNode(nodeText.substring(0, index));
+                const highlightedSpan = document.createElement('span');
+                highlightedSpan.className = 'highlighted';
+                highlightedSpan.textContent = nodeText.substring(index, index + searchText.length);
+                const afterText = document.createTextNode(nodeText.substring(index + searchText.length));
+
+                // Replace the original text node with these three parts
+                const parentNode = node.parentNode;
+                parentNode.insertBefore(beforeText, node);
+                parentNode.insertBefore(highlightedSpan, node);
+                parentNode.insertBefore(afterText, node);
+                parentNode.removeChild(node);
+
+                found = true;
+                break;
+            }
+        }
+
+        if (found) {
+            // Update the original text with the modified HTML
+            originalText.html(tempDiv.html());
 
             // Scroll to the highlighted element
             const highlightedElement = originalText.find('.highlighted');

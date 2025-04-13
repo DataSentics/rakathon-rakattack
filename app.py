@@ -166,7 +166,6 @@ def validate_field():
 
     # TODO: make the validation prompt bold if ** is otuputed
     # TODO: make the data editable and green once edited
-    # TODO: fix <br/> formatting and scrolling to the highlighted element
     # TODO: faiss search??
 
     # validation_prompt = "Vyjmenuj mi veškeré zmínky o komorbiditách pacienta. A jak jsi je v textu našel."
