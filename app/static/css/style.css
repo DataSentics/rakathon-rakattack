@@ -272,9 +272,36 @@ h5 {
 }
 
 .value {
-    color: #395539;
-    /* Slightly darker green for value text */
-    font-family: 'Inter', sans-serif;
+    margin-left: 5px;
+    overflow-wrap: break-word;
+    max-width: 80%;
+}
+
+/* Style for editable fields */
+[contenteditable="true"].value {
+    padding: 2px 5px;
+    border-radius: 3px;
+    border: 1px dashed #ced4da;
+    min-width: 50px;
+}
+
+[contenteditable="true"].value:focus {
+    outline: none;
+    border: 1px solid #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Success style for valid input - higher specificity to override null-value */
+.key-value-pair .value.valid-input {
+    background-color: #d4edda !important;
+    border-color: #c3e6cb !important;
+    color: #155724 !important;
+}
+
+/* Keep focus style even when valid */
+.key-value-pair .value.valid-input:focus {
+    border-color: #28a745 !important;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25) !important;
 }
 
 .highlighted {

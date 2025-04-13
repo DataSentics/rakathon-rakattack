@@ -291,12 +291,70 @@ $(document).ready(function () {
                         keyValuePair.addClass('null-value');
                         nullValueCount++;
 
+                        // Make the value div editable
+                        const valueDiv = keyValuePair.find('.value');
+                        valueDiv.attr('contenteditable', 'true');
+                        valueDiv.attr('data-original-value', 'null');
+
+                        // Add click handler to clear the null value when clicked
+                        valueDiv.on('click', function (e) {
+                            // Only clear if the content is null
+                            if ($(this).text().trim() === "null") {
+                                $(this).text('');
+                                // Set focus back to the element
+                                $(this).focus();
+                            }
+                            // Stop event propagation to prevent parent click handlers
+                            e.stopPropagation();
+                        });
+
+                        // Add input change handler
+                        valueDiv.on('blur', function () {
+                            const newValue = $(this).text().trim();
+                            const keyValuePairElement = $(this).closest('.key-value-pair');
+
+                            // Check if the input is still null/empty
+                            if (newValue === "" || newValue === "null") {
+                                // If this is a required field
+                                if (keyValuePairElement.hasClass('null-value-required')) {
+                                    // Keep the required field styling
+                                    $(this).removeClass('valid-input');
+                                } else {
+                                    // For optional fields, keep the null-value class
+                                    keyValuePairElement.addClass('null-value');
+                                    $(this).removeClass('valid-input');
+                                }
+                            } else {
+                                // Remove both null-value classes and add valid-input class
+                                keyValuePairElement.removeClass('null-value');
+                                keyValuePairElement.removeClass('null-value-required');
+                                $(this).addClass('valid-input');
+                            }
+                        });
+
                         // Check if this is a required field that is missing
                         if (missingRequiredFields.has(fullKey)) {
                             // Override with the required field style (red background)
                             keyValuePair.removeClass('null-value');
                             keyValuePair.addClass('null-value-required');
                             nullRequiredValueCount++;
+
+                            // Make the value div editable for required fields too
+                            const valueDiv = keyValuePair.find('.value');
+                            valueDiv.attr('contenteditable', 'true');
+                            valueDiv.attr('data-original-value', 'null');
+
+                            // Add click handler to clear the null value when clicked
+                            valueDiv.on('click', function (e) {
+                                // Only clear if the content is null
+                                if ($(this).text().trim() === "null") {
+                                    $(this).text('');
+                                    // Set focus back to the element
+                                    $(this).focus();
+                                }
+                                // Stop event propagation to prevent parent click handlers
+                                e.stopPropagation();
+                            });
 
                             // Add Validovat button
                             const validateButton = $('<button class="validate-btn">Validovat</button>');
@@ -352,6 +410,23 @@ $(document).ready(function () {
                                     keyValuePair.removeClass('null-value');
                                     keyValuePair.addClass('null-value-required');
                                     nullRequiredValueCount++;
+
+                                    // Make the value div editable for required fields too
+                                    const valueDiv = keyValuePair.find('.value');
+                                    valueDiv.attr('contenteditable', 'true');
+                                    valueDiv.attr('data-original-value', 'null');
+
+                                    // Add click handler to clear the null value when clicked
+                                    valueDiv.on('click', function (e) {
+                                        // Only clear if the content is null
+                                        if ($(this).text().trim() === "null") {
+                                            $(this).text('');
+                                            // Set focus back to the element
+                                            $(this).focus();
+                                        }
+                                        // Stop event propagation to prevent parent click handlers
+                                        e.stopPropagation();
+                                    });
 
                                     // Add Validovat button
                                     const validateButton = $('<button class="validate-btn">Validovat</button>');
