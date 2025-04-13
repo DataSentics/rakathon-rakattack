@@ -369,7 +369,6 @@ SAMPLE_RESPONSE = {
         "kontrola": "2024-01-18",
         "koloskopie": "2020-12-16",
         "mamografie": "2022-06-29",
-        "ct": "2020-02-25",
         "panhysterektomie": "2011-02-01",
     },
 }
