@@ -1,6 +1,6 @@
 # Rakattack - OnkoMiner
 
-![Rakattack Showcase](rakattack_showcase.gif)
+![Rakattack Showcase](images/rakattack_showcase.gif)
 
 Rakattack - OnkoMiner is a web application that helps medical professionals extract and validate structured data from Czech oncology medical records. The application uses Azure OpenAI to analyze medical text and automatically fill in required fields in a standardized format.
 
@@ -8,6 +8,7 @@ Rakattack - OnkoMiner is a web application that helps medical professionals extr
 
 - **Text Analysis**: Upload or paste Czech medical text to automatically extract relevant information
 - **Field Validation**: Validate specific fields with AI-powered suggestions
+
 - **Required Fields Check**: Automatic validation of required fields in the medical record
 - **Mock Data Support**: Test the application without Azure OpenAI credentials using sample data
 - **Interactive UI**: User-friendly interface for reviewing and editing extracted data
