@@ -308,6 +308,15 @@ $(document).ready(function () {
                             e.stopPropagation();
                         });
 
+                        // Add keydown handler to save value on Enter
+                        valueDiv.on('keydown', function (e) {
+                            // If Enter key is pressed
+                            if (e.which === 13 || e.keyCode === 13) {
+                                e.preventDefault(); // Prevent default behavior (new line)
+                                $(this).blur(); // Trigger blur event which saves the value
+                            }
+                        });
+
                         // Add input change handler
                         valueDiv.on('blur', function () {
                             const newValue = $(this).text().trim();
@@ -354,6 +363,15 @@ $(document).ready(function () {
                                 }
                                 // Stop event propagation to prevent parent click handlers
                                 e.stopPropagation();
+                            });
+
+                            // Add keydown handler to save value on Enter
+                            valueDiv.on('keydown', function (e) {
+                                // If Enter key is pressed
+                                if (e.which === 13 || e.keyCode === 13) {
+                                    e.preventDefault(); // Prevent default behavior (new line)
+                                    $(this).blur(); // Trigger blur event which saves the value
+                                }
                             });
 
                             // Add Validovat button
@@ -426,6 +444,15 @@ $(document).ready(function () {
                                         }
                                         // Stop event propagation to prevent parent click handlers
                                         e.stopPropagation();
+                                    });
+
+                                    // Add keydown handler to save value on Enter
+                                    valueDiv.on('keydown', function (e) {
+                                        // If Enter key is pressed
+                                        if (e.which === 13 || e.keyCode === 13) {
+                                            e.preventDefault(); // Prevent default behavior (new line)
+                                            $(this).blur(); // Trigger blur event which saves the value
+                                        }
                                     });
 
                                     // Add Validovat button

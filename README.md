@@ -1,17 +1,20 @@
-# Medical Text Analysis Web App
+# Rakattack - OnkoMiner
 
-A simple web application that uses Azure OpenAI to analyze medical text and present the results in an interactive manner.
+![Rakattack Showcase](rakattack_showcase.gif)
+
+Rakattack - OnkoMiner is a web application that helps medical professionals extract and validate structured data from Czech oncology medical records. The application uses Azure OpenAI to analyze medical text and automatically fill in required fields in a standardized format.
 
 ## Features
 
-- Single page application with two screens
-- Processes medical text using Azure OpenAI API
-- Displays structured information extracted from medical text
-- Interactive timeline visualization
-- Hover over extracted information to highlight relevant text
-- Responsive design using Bootstrap
+- **Text Analysis**: Upload or paste Czech medical text to automatically extract relevant information
+- **Field Validation**: Validate specific fields with AI-powered suggestions
+- **Required Fields Check**: Automatic validation of required fields in the medical record
+- **Mock Data Support**: Test the application without Azure OpenAI credentials using sample data
+- **Interactive UI**: User-friendly interface for reviewing and editing extracted data
 
-## Setup
+## Project Structure
+
+### Setup
 
 1. Clone this repository
 2. Install the required dependencies:
@@ -29,7 +32,7 @@ A simple web application that uses Azure OpenAI to analyze medical text and pres
 
 4. Replace the placeholder values with your actual Azure OpenAI credentials.
 
-## Running the Application
+### Running the Application
 
 Run the following command in the root directory:
 
@@ -37,17 +40,9 @@ Run the following command in the root directory:
 python app.py
 ```
 
-The application will be available at `http://localhost:5000/`.
+The application will be available at `http://localhost:5100/`.
 
-## Usage
-
-1. Enter or paste medical text in the input field on the first screen
-2. Click the "Process" button to analyze the text
-3. View the analysis results on the second screen
-4. Hover over the key-value pairs to highlight the corresponding text
-5. Use the "Back to Input" button to return to the first screen
-
-## Requirements
+### Requirements
 
 - Python 3.8 or higher
 - Flask

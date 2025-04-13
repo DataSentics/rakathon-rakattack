@@ -18,7 +18,9 @@ REQUIRED_FIELDS = {
             "jiny_predispozicni_syndrom": True,
         },
         "relevantni_komorbidity_a_stav_pacienta": {
-            "zavazne_onemocneni_srdce_a_cev": True,
+            "zavazne_onemocneni_srdce_a_cev": {
+                "hypertenze": True,
+            },
             "zavazne_metabolicke_onemocneni": True,
             "zavazne_plicni_onemocneni": True,
             "zavazne_onemocneni_git": True,
@@ -160,7 +162,7 @@ def validate_field():
         You are a medical expert specializing in oncology medical records, particularly Czech cancer treatment reports.
         Your task is to analyze the given medical text and suggest possible values for a specific missing field in the medical record. The field name will be provided along with the full medical text.
         The validation reason should be written in Czech language.
-        Last sentence should include the suggested value in bold text. Example: "<b>For this field, the suggested value is value</b>"
+        Last sentence should include the suggested value in bold text. Example: "<b>Pro toto pole je možná hodnota: value</b>"
         Whatever output you would provide in bold text, use <b> tags to format it instead of **.
         The field you are validating has the following name: {field}
     """

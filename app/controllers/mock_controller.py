@@ -18,7 +18,7 @@ class MockOpenAIController:
     def process_medical_text(self, text):
         """Process medical text and return a mock response."""
         # Simulate processing delay
-        # time.sleep(1.5)
+        time.sleep(2)
 
         try:
             # Return the sample response
