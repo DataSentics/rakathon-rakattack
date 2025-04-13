@@ -333,7 +333,7 @@ $(document).ready(function () {
                                     }),
                                     success: function (response) {
                                         if (response.success) {
-                                            outputElement.html('Validace: ' + response.suggestion);
+                                            outputElement.html(response.suggestion);
                                         } else {
                                             outputElement.html('Chyba validace: ' + (response.error || 'Neznámá chyba'));
                                         }
@@ -388,7 +388,7 @@ $(document).ready(function () {
                                             }),
                                             success: function (response) {
                                                 if (response.success) {
-                                                    outputElement.html('Validace: ' + response.suggestion);
+                                                    outputElement.html(response.suggestion);
                                                 } else {
                                                     outputElement.html('Chyba validace: ' + (response.error || 'Neznámá chyba'));
                                                 }

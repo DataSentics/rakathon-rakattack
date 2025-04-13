@@ -161,9 +161,9 @@ def validate_field():
         Your task is to analyze the given medical text and suggest possible values for a specific missing field in the medical record. The field name will be provided along with the full medical text.
         The validation reason should be written in Czech language.
         The field you are validating has the following name: {field}
-
     """
 
+    controller = OpenAIController()
     try:
         response = controller.client.chat.completions.create(
             temperature=0.7,
