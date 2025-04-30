@@ -1,0 +1,23 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Project Structure
+
+The Rakathon Demo is a medical text processing application that analyzes Czech cancer treatment reports and extracts structured information. The application consists of the following main components:
+
+## Main Components
+- [app.py](mdc:app.py) - Flask application entry point that defines routes and handles requests
+- [app/controllers/openai_controller.py](mdc:app/controllers/openai_controller.py) - Handles communication with OpenAI API
+- [app/prompts/medical_text_prompt.py](mdc:app/prompts/medical_text_prompt.py) - Contains the system prompt for medical text analysis
+- [app/templates/index.html](mdc:app/templates/index.html) - Main UI template
+- [app/static/js/main.js](mdc:app/static/js/main.js) - Front-end JavaScript logic
+- [requirements.txt](mdc:requirements.txt) - Project dependencies
+
+## Directory Structure
+- `app/` - Main application code
+  - `controllers/` - Backend logic for communicating with OpenAI API
+  - `prompts/` - System prompts for AI analysis
+  - `templates/` - HTML templates
+  - `static/` - Static files (CSS, JS, images)

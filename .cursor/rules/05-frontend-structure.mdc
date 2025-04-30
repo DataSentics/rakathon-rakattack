@@ -1,0 +1,34 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Frontend Structure
+
+## HTML Template
+
+The main application interface is defined in [app/templates/index.html](mdc:app/templates/index.html). Key features include:
+
+- Two main screens: text input and results display
+- Patient information card with timeline visualization
+- Split-view display showing original text and analysis results
+- Loading spinner for async operations
+
+## JavaScript Logic
+
+The frontend functionality is implemented in [app/static/js/main.js](mdc:app/static/js/main.js). Key functions include:
+
+- `processText()` - Sends text to the backend for processing
+- `handleProcessSuccess()` - Handles successful API responses
+- `generateTimeline()` - Creates a visual timeline from extracted dates
+- `displayResults()` - Renders the structured JSON data
+- `searchAndHighlightText()` - Highlights matching text in the original document
+
+## UI Flow
+
+1. User enters medical text in the input screen
+2. On submission, a loading spinner appears during processing
+3. Results are displayed in a split view:
+   - Left side shows the original text
+   - Right side shows the structured data
+4. Clicking on timeline elements highlights relevant text in the original document

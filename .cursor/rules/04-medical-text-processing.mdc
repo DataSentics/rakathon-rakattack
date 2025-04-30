@@ -1,0 +1,32 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Medical Text Processing
+
+## Medical Prompt
+
+The application uses a specialized prompt defined in [app/prompts/medical_text_prompt.py](mdc:app/prompts/medical_text_prompt.py) for processing Czech cancer treatment reports. The prompt:
+
+- Instructs the AI to analyze Czech oncological medical records
+- Extracts structured information into a specific JSON format
+- Includes reference information like MKN-10 codes for diseases
+- Handles dates and events in a standardized format
+
+## Required Fields
+
+The application validates that specific required fields are present in the AI response. These fields are defined in the `REQUIRED_FIELDS` dictionary in [app.py](mdc:app.py).
+
+Key sections include:
+- Administrative data (`administrativni_udaje`)
+- Patient parameters (`modul_a_pacient_parametry`)
+- Diagnostic information (`modul_b_cast_b1`)
+- Treatment information (`modulc_dospelionk_pac`)
+
+## Data Validation
+
+The application validates the structured data in several ways:
+- Checks for missing required fields using the `validate_required_fields` function
+- Provides field validation through the `/api/validate` endpoint
+- Returns information about missing fields to guide the user on what additional data is needed

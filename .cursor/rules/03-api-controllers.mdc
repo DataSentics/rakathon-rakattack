@@ -1,0 +1,36 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# API & Controllers
+
+## API Endpoints
+
+The application provides the following API endpoints defined in [app.py](mdc:app.py):
+
+- `GET /` - Serves the main application page
+- `POST /api/process` - Processes medical text and returns structured data
+- `POST /api/validate` - Validates specific fields in the medical text
+
+## Controllers
+
+### OpenAI Controller
+
+The [OpenAI Controller](mdc:app/controllers/openai_controller.py) handles communication with Azure OpenAI:
+
+- Initializes Azure OpenAI client with API credentials
+- Processes medical text using a specialized prompt
+- Returns structured JSON data from the OpenAI response
+
+### Mock Controller
+
+For testing purposes, the application can use a mock controller when:
+- The `USE_MOCK` environment variable is set to "true"
+- Required Azure OpenAI environment variables are missing
+
+## Environment Configuration
+
+The application uses environment variables loaded from a `.env` file:
+- `AZURE_OPENAI_API_KEY` - API key for Azure OpenAI
+- `USE_MOCK` - Flag to use mock controller for testing

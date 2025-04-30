@@ -1,0 +1,23 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Application Flow
+
+The Rakathon Demo application follows a specific flow for processing medical text:
+
+1. The user enters medical text in the web interface ([app/templates/index.html](mdc:app/templates/index.html))
+2. The text is sent to the Flask backend ([app.py](mdc:app.py)) through the `/api/process` endpoint
+3. The [OpenAI controller](mdc:app/controllers/openai_controller.py) processes the text using Azure OpenAI with a custom medical prompt
+4. The [medical prompt](mdc:app/prompts/medical_text_prompt.py) instructs the AI to extract structured information from Czech medical texts
+5. The backend validates the response for required fields defined in [app.py](mdc:app.py)
+6. The structured data is returned to the frontend and displayed to the user
+7. The user can also validate specific fields using the `/api/validate` endpoint
+
+## Frontend-Backend Interaction
+
+- The frontend sends AJAX requests to the backend through JavaScript ([app/static/js/main.js](mdc:app/static/js/main.js))
+- The backend processes requests using Flask routes defined in [app.py](mdc:app.py)
+- The data is processed by the OpenAI controller with specialized medical prompts
+- The results are displayed in a structured format on the frontend
